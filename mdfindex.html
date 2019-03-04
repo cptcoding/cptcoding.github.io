@@ -1,0 +1,185 @@
+<html>   
+     <head>   
+          <link type="text/css"rel="stylesheet" href="stylesheet.css">   
+    
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">   
+    
+          <title> Comment Post </title>   
+          <script>   
+               function validate(){   
+                    var name = document.getElementById("name");   
+                    var blank_field = false   
+                    if(name.value== ""){   
+                         name.style.backgroundColor = "Red";   
+                         blank_field = true;   
+                    }else {   
+                         name.style.backgroundColor = "yellow";   
+                    }   
+    
+                    var title = document.getElementById("title");   
+                    if(title.value== ""){   
+                         title.style.backgroundColor = "Red";   
+                         blank_field = true;   
+                    }else {   
+                         title.style.backgroundColor = "yellow";   
+                    }   
+    
+                    var comment = document.getElementById("comment");   
+                    if(comment.value== ""){   
+                         comment.style.backgroundColor = "Red";   
+                         blank_field = true;   
+                    }else {   
+                         comment.style.backgroundColor = "yellow";   
+                    }   
+    
+                    var text_color = document.getElementById("text_color");   
+                    var bg_color = document.getElementById("bg_color");   
+    
+                    if(text_color.value == "-Choose Color-"){       
+                    text_color.style.border = "2px solid red";       
+                    blank_field = true;       
+               } else {       
+                    text_color.style.border = "none";       
+               }       
+    
+               if (bg_color.value == "-Choose Color-") {       
+                    bg_color.style.border = "2px solid red";       
+                    blank_field = true;       
+               } else {       
+                    bg_color.style.border = "none";       
+               }   
+               var icon = document.getElementsByName("icon");   
+               var radiobtns = document.getElementById("radiobtns");   
+               var blank_radio = true;   
+               for(var i=0; i < icon.length; i++){   
+                         if(icon[i].checked == true){   
+                              blank_radio = false;   
+                         }   
+                    }   
+                    if(blank_radio == true){   
+                         radiobtns.style.border = "2px solid red";   
+                         blank_field = true;   
+                    } else {     
+                         radiobtns.style.border = "none";   
+                    }   
+                    var message = document.getElementById("message");   
+                    if(blank_field==true){   
+                         message.innerHTML = "<h3 style='color:red;'>You missed a spot!</h3>";     
+                    }else {   
+                         message.innerHTML = "";   
+                    }   
+                    add();   
+               }   
+    
+               var array = [];   
+    
+               function add(){   
+                    var name = document.getElementById("name");   
+                    var title = document.getElementById("title");   
+                    var comment = document.getElementById("comment");   
+                    var radiobtns = document.getElementById("radiobtns");   
+                    var icon = document.getElementsByName("icon");     
+                    var icon_value;   
+                    var text_color = document.getElementById("text_color");     
+                    var bg_color = document.getElementById("bg_color");   
+                    for(var i=0; i < icon.length; i++){   
+                         if(icon[i].checked == true){   
+                         icon_value = icon[i].value;     
+                         }   
+                    }   
+                    var storage = {name:name.value, title:title.value, comment:comment.value, icon:icon_value, text_color:text_color.value,bg_color:bg_color.value};   
+                    array.push(storage);   
+                    show();   
+               }   
+    
+               function show(){   
+                    var display = document.getElementById("display");   
+                    var post="";     
+                    for(var i=0; i < array.length; i++){   
+                         post += "<div id='usercomment' style='background-color:"+array[i].bg_color+";'>";   
+                         post += "<input type='checkbox' onclick='gone("+i+");'/>";     
+                         post += "<span style='color:"+array[i].text_color+";'>";   
+                         post+="<img src='"+array[i].icon+"' class='icon' />";     
+                         post+="<strong> "+array[i].name+ "</strong><br>";     
+                         post+="<strong> "+array[i].title+ "</strong><br>";     
+                         post+="<strong> "+array[i].comment+ "</strong><br>";   
+                         post += "</span>";   
+                         post += "</div>";   
+                    }   
+                    display.innerHTML = post;   
+               }   
+               function gone(index){     
+                    array.splice(index,1);   
+                    show();   
+               }   
+          </script>   
+     </head>   
+     <body>   
+          <div class="container">     
+               <div class="row">     
+               <img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/zh/thumb/8/85/Epic_Logo.png/270px-Epic_Logo.png">   
+               </div><!-- end logo row -->   
+          </div>   
+          <div class="row">     
+               <div class="col-xs-12" id="menu">MENU</div>   
+               <ul class="nav nav-tabs">     
+                    <li> <a href="#">HOME</a> </li>   
+                    <li> <a href="#">VIDEOS</a></li>   
+                    <li> <a href="#">SHOP</a></li>   
+               </ul>   
+          </div> <!-- end menu row -->   
+          <div class="row">     
+               <div class="col-xs-2 col-sm-2" id="comments">COMMENTS </div> 
+           </div> 
+                    <div class="col-xs-12 col-sm-4" id="form">   
+                         <header id="header"> Leave a Comment</header>   
+                         <div id="message"></div>   
+                         <form class="form-inline">     
+                              <label>   
+                                   Name:   
+                              </label>   
+                              <input type="text" class="form-control" id="name" placeholder="Enter Name">   
+                              <select id="text_color">   
+                                   <option> -Choose Color- </option>   
+                                   <option> Red </option>   
+                                   <option> Blue </option>   
+                                   <option> Orange </option>   
+                                   <option> Green </option>   
+                              </select>   
+                         </form>   
+                         <form class="form-horizontal">   
+                              <label>Title: </label>     
+                              <input type="text" class="form-control" id="title" placeholder="Enter Comment Title">  
+                              <label>Background Color: </label>     
+                              <select id="bg_color" class="form-control">   
+                                   <option> -Choose Color- </option>   
+                                   <option> Pink </option>     
+                                   <option> Green </option>     
+                                   <option> Black </option>     
+                                   <option> Orange </option>     
+                              </select>   
+                         </form>   
+                         <form class="form-inline"  id="radiobtns">   
+                              <label>Icons: </label>     
+                              <input type="radio" name="icon" value="sorting_hat.png">   
+                              <img src="sorting_hat.png" class="icon" />  
+    
+                              <input type="radio" name="icon" value="smile_4.png">   
+                              <img src="smile_4.png" class="icon" />   
+    
+                              <input type="radio" name="icon" value="potter.png">   
+                              <img src="potter.png" class="icon" />   
+    
+                              <input type="radio" name="icon" value="dog.png">   
+                              <img src="dog.png" class="icon" />   
+    
+                         </form>   
+                         <label>Comment: </label> <br>   
+                         <textarea id="comment" class="form-control" rows="8"> </textarea> <br>   
+                         <input class="btn btn-default" type="button" value="Submit Comment" onclick="validate()">   
+                    </div>   
+                    <div id="display"></div>   
+               </div> <!-- end container div -->   
+          </div> <!-- end comment row -->   
+     </body>   
+</html>
