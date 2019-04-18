@@ -1,78 +1,22 @@
-<html> 
+<html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="main.css" />
-		<title>minecraft</title> 
-		<script> 
-			function banner(){ 
-			var text = confirm("Did You Really Want to Click on My Banner?"); 
-			return text; 
-			} 
-			function answer(){ 
-				var radio = document.getElementsByName("trivia");
-				var selection = false;
-				var message = "";
-				for( var i = 0; i < radio.length; i++) {
-				if(radio[i].value == "this" && radio[i].checked == true) { 
-				selection = true; 
-				} 
-				}
-				if(selection == true) {
-				message = message + "<b><p style='color:green'>Way to go!</p></b>"; 
-				} else { 
-				message = message + "<b><p style='color:red'>Try again my friend.</p></b>"; 
-				}
-				document.getElementById("response").innerHTML = message;
+		<title> Menu </title>
+		<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+		<script>
+			function start(){
+				sjs.open();
+				var menu_text = new sjs.Text("Main Menu",28,"blue");
+				menu_text.centerH();
+				var startBtn = new sjs.Button("Start", function(){
+					window.location = "level_1.html";
+				});
+				startBtn.center();
+				var info_text = new sjs.Text("Created By Karl the Camel",20,"black");
+				info_text.bottom().centerH();
 			}
 		</script>
-	</head> 
-	<style>
-	</style>
-	<body id="oof"> 
-		<header id="banner">I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! <span class="wet">I like minecraft!</span> I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft! I like minecraft!</header>
-		<nav>
-			<ul id="navmenu">
-				<li class="navitem">home</li>
-				<li class="navitem">games</li>
-				<li class="navitem">about the creator</li>
-			</ul>
-		</nav>
-		<div class="rightside"> 
-			<img width="50%" src="https://thumbs.dreamstime.com/z/minecraft-art-beutyful-search-secrets-78312532.jpg" />
-		</div> 
-		<div class="leftside"> 
-
-		</div>
-		<div class="clearfloat"></div>
-		<h1>Minecraft fun</h1>
-		<p class="hi">
-			I am <strong>making</strong> this website to <u>tell</u> you about <i>fun</i> things I like to do in minecraft.
-		</p>
-		<div class="fun">
-			<ul>
-				<li class="yeet">mods</li>
-				<li class="yeet">maps</li>
-				<li class="yeet">and servers</li>
-			</ul>
-		</div>
-		<h2>minecraft server trivia:</h2>
-		<p>which server is the most played out of these?</p>
-		<form>
-			<div id="response"> </div>
-			<div class="good">
-				<input type="radio" name="trivia" value="hi"> the hive <br>
-				<input type="radio" name="trivia" value="hi"> snapcraft <br>
-				<input type="radio" name="trivia" value="this"> hipixle <br>
-				<input type="radio" name="trivia" value="hi"> mineplex <br>
-				<input id="btn" onclick="answer()" type="button" id="submit" value="Click Here">
-			</div>
-			<audio width="400" height="220" controls autoplay>
-				<source src="http://www.w3schools.com/tags/horse.mp3" type="audio/mpeg">
-			</audio>
-		</form>
-		<p>music I listen to while I code.</p>
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/nmJcPmxK1CQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		<hr>
-		<center><a href="https://www.roblox.com/">My Favorite Website</a> </center>
-		<footer id="footer">made by Leo Kuehn</iframe></footer>
-	</body> 
+	</head>
+	<body onload="start()">
+		<div id="target" style="overflow:hidden; background-color:green; margin:auto;"></div>
+	</body>
 </html>
